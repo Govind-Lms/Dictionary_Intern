@@ -32,7 +32,7 @@ class SynonymsView extends ConsumerWidget {
                           horizontal: 10.0, vertical: 5.0),
                       child: Text(data,
                           style: Style.definationStyle
-                              .copyWith(color: theme.backgroundColor)),
+                              .copyWith(color: theme.scaffoldBackgroundColor)),
                     );
                   },
                 ).toList(),
@@ -63,7 +63,7 @@ class SynonymsView extends ConsumerWidget {
                           horizontal: 10.0, vertical: 5.0),
                       child: Text(data,
                           style: Style.definationStyle
-                              .copyWith(color: theme.backgroundColor)),
+                              .copyWith(color: theme.scaffoldBackgroundColor)),
                     );
                   },
                 ).toList(),

@@ -15,7 +15,7 @@ class WordEmpty extends ConsumerWidget {
         children: [
           Shimmer.fromColors(
             baseColor: Theme.of(context).primaryColor,
-            highlightColor: Theme.of(context).backgroundColor,
+            highlightColor: Theme.of(context).scaffoldBackgroundColor,
             child:  Text(
               'Search For...',
               style: Style.searchStyle.copyWith(

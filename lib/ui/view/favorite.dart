@@ -41,7 +41,7 @@ class _FavoriteScreenState extends ConsumerState<FavoriteScreen> {
     return Scaffold(
       appBar: AppBar(
         title:  Text('Favorite',style: TextStyle(color: theme.primaryColor),),
-        backgroundColor: theme.backgroundColor,
+        backgroundColor: theme.scaffoldBackgroundColor,
         leading: IconButton(
           onPressed: () {
             Navigator.of(context).pop();
@@ -52,7 +52,7 @@ class _FavoriteScreenState extends ConsumerState<FavoriteScreen> {
           color: Theme.of(context).primaryColor,
         ),
       ),
-      backgroundColor: theme.backgroundColor,
+      backgroundColor: theme.scaffoldBackgroundColor,
       body: ValueListenableBuilder(
         valueListenable: Hive.box(myBoxName).listenable(),
         builder: (context, data, _) {

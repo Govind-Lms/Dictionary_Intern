@@ -34,9 +34,9 @@ class DataViewState extends ConsumerState<OnClickFav> {
           ),
           color: Theme.of(context).primaryColor,
         ),
-        backgroundColor: theme.backgroundColor,
+        backgroundColor: theme.scaffoldBackgroundColor,
       ),
-      backgroundColor: theme.backgroundColor,
+      backgroundColor: theme.scaffoldBackgroundColor,
       body: SingleChildScrollView(
         child: Container(
           margin: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -231,7 +231,7 @@ class DataViewState extends ConsumerState<OnClickFav> {
                                 horizontal: 10.0, vertical: 5.0),
                             child: Text(data,
                                 style: Style.definationStyle
-                                    .copyWith(color: theme.backgroundColor)),
+                                    .copyWith(color: theme.scaffoldBackgroundColor)),
                           );
                         },
                       ).toList(),
@@ -264,7 +264,7 @@ class DataViewState extends ConsumerState<OnClickFav> {
                                 horizontal: 10.0, vertical: 5.0),
                             child: Text(data,
                                 style: Style.definationStyle
-                                    .copyWith(color: theme.backgroundColor)),
+                                    .copyWith(color: theme.scaffoldBackgroundColor)),
                           );
                         },
                       ).toList(),

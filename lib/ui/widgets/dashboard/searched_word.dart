@@ -55,9 +55,71 @@ class _SearchedWordState extends ConsumerState<SearchedWord> {
               );
             },
           );
+          // return ListView.builder(
+          //   itemCount: wordData.length,
+          //   itemBuilder: (BuildContext context, int index) {
+          //     return Container(
+          //       margin: const EdgeInsets.all(10.0),
+          //       decoration: BoxDecoration(
+          //         borderRadius: BorderRadius.circular(10.0),
+          //         color: Colors.white,
+          //       ),
+          //       child: Column(
+          //         crossAxisAlignment: CrossAxisAlignment.start,
+          //         children: [
+          //           Container(
+          //             padding: const EdgeInsets.all(10.0),
+          //             width: MediaQuery.of(context).size.width/2,
+          //             height: 40.0,
+          //             decoration: BoxDecoration(
+          //               borderRadius: const BorderRadius.only(
+          //                 topLeft: Radius.circular(10.0),
+          //                 bottomRight: Radius.circular(50.0),
+          //               ),
+          //               color: Colors.grey[400],
+          //             ),
+          //             child: Text("${wordData[index].meanings![0].partOfSpeech?.toUpperCase()}"),
+          //           ),
+          //           Row(
+          //             children: [
+          //               const SizedBox(width: 20.0,),
+          //               Column(
+          //                 children: [
+          //                   Container(
+          //                     margin: const EdgeInsets.only(top:10.0),
+          //                     width: 2.0,
+          //                     height: 20.0,
+          //                     color: Colors.black,
+          //                   ),
+          //                   Icon(Icons.circle_outlined,size: 20,),
+          //                   Container(
+          //                     margin: const EdgeInsets.only(bottom:10.0),
+          //                     width: 2.0,
+          //                     height: 20.0,
+          //                     color: Colors.black,
+          //                   ),
+          //                 ],
+          //               ),
+          //               const SizedBox(width: 10.0,),
+          //               Column(
+          //                 children: [
+          //                   Text("${wordData[index].word?.toUpperCase()}"),
+          //                   Text("${wordData[index].phonetic?.toUpperCase()}"),
+          //                 ],
+          //               ),
+          //             ],
+          //           ),
+                    
+          //         ],
+          //       ),
+          //     );
+          //   },
+          // );
         },
         error: (error, stackTrace) => Text(error.toString()),
-        loading: () => const Center(child: CircularProgressIndicator(),),
+        loading: () => const Center(
+          child: CircularProgressIndicator(),
+        ),
       ),
     );
   }

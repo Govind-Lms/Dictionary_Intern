@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intern_dictionary/provider/dict_provider.dart';
 import 'package:intern_dictionary/ui/view/favorite.dart';
+import 'package:intern_dictionary/ui/view/ml/text_recog.dart';
 import 'package:intern_dictionary/ui/view/word_search.dart';
 import 'package:intern_dictionary/ui/widgets/dashboard/word_empty_screen.dart';
 
@@ -20,13 +21,13 @@ class _DashboardState extends ConsumerState<Dashboard> {
   Widget build(BuildContext context) {
     final word = ref.watch(wordProvider);
     return Scaffold(
-      backgroundColor: Theme.of(context).backgroundColor,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: Column(
         
         children: [
           Container(
             padding: const EdgeInsets.only(top: 40.0),
-            color: Theme.of(context).backgroundColor,
+            color: Theme.of(context).scaffoldBackgroundColor,
             width: MediaQuery.of(context).size.width,
             child: Column(
               children: [
@@ -36,9 +37,11 @@ class _DashboardState extends ConsumerState<Dashboard> {
                   children: [
                     const SizedBox(width: 10.0,),
                     IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(builder: (_)=> const TextRecogFromImage()));
+                      },
                       icon: const Icon(
-                        Icons.abc,
+                        Icons.camera_alt,
                       ),
                       iconSize: 30.0,
                       color: Theme.of(context).primaryColor,

@@ -100,9 +100,9 @@ class DataViewState extends ConsumerState<DataView> {
             color: Theme.of(context).primaryColor,
           ),
         ],
-        backgroundColor: theme.backgroundColor,
+        backgroundColor: theme.scaffoldBackgroundColor,
       ),
-      backgroundColor: theme.backgroundColor,
+      backgroundColor: theme.scaffoldBackgroundColor,
       body: SingleChildScrollView(
         child: Container(
           margin: const EdgeInsets.symmetric(horizontal: 20.0),
