@@ -42,7 +42,7 @@ class InvalidApiKeyException implements Exception {
   InvalidApiKeyException({this.message = 'Invalid Api Key'});
 
   @override
-  String toString() => 'WordNotFoundException: $message';
+  String toString() => 'Invalid Api: $message';
 }
 
 class UnknownException implements Exception {

@@ -1,9 +1,9 @@
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:intern_dictionary/ui/view/favorite.dart';
-import '../../../model/word_model.dart';
-import '../../../theme/style.dart';
+import 'package:intern_dictionary/ui/favorite_screen.dart';
+import '../../model/word_model.dart';
+import '../../theme/style.dart';
 
 class OnClickFav extends ConsumerStatefulWidget {
   final Word word;

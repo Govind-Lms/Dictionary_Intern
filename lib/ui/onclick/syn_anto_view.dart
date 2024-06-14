@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intern_dictionary/model/word_model.dart';
-import 'package:intern_dictionary/ui/view/onclick/bottom_sheet.dart';
+import 'package:intern_dictionary/ui/onclick/bottom_sheet.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
-import '../../../provider/dict_provider.dart';
-import '../../../theme/style.dart';
+import '../../provider/dict_provider.dart';
+import '../../theme/style.dart';
 
 class SynonymsView extends ConsumerWidget {
   final List<Meaning>? meanings;
@@ -66,17 +66,28 @@ class SynonymsView extends ConsumerWidget {
                 alignment: WrapAlignment.start,
                 children: meanings![0].antonyms!.map(
                   (data) {
-                    return Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10.0),
-                        color: theme.primaryColor.withOpacity(0.5),
+                    return InkWell(
+                      onTap: (){
+                        ref.read(synoProvider.notifier).state = data;
+                        showMaterialModalBottomSheet(
+                          context: context,
+                          enableDrag: true,
+                          builder: (context){
+                            return const BottomSheetView();
+                        });
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10.0),
+                          color: theme.primaryColor.withOpacity(0.5),
+                        ),
+                        margin: const EdgeInsets.only(right: 10.0, bottom: 10.0),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 10.0, vertical: 5.0),
+                        child: Text(data,
+                            style: Style.definationStyle
+                                .copyWith(color: theme.scaffoldBackgroundColor)),
                       ),
-                      margin: const EdgeInsets.only(right: 10.0, bottom: 10.0),
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 10.0, vertical: 5.0),
-                      child: Text(data,
-                          style: Style.definationStyle
-                              .copyWith(color: theme.scaffoldBackgroundColor)),
                     );
                   },
                 ).toList(),

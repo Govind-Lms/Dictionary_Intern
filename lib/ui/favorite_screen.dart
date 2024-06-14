@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:intern_dictionary/ui/view/onclickFav.dart';
+import 'package:intern_dictionary/ui/onclick_fav.dart';
 
-import '../../model/word_model.dart';
+import '../model/word_model.dart';
 
 class FavoriteScreen extends ConsumerStatefulWidget {
   const FavoriteScreen({super.key});
@@ -16,7 +16,7 @@ class _FavoriteScreenState extends ConsumerState<FavoriteScreen> {
   String myBoxName = "favoriteBox";
   
   openBox() async {
-    await Hive.openBox(myBoxName);
+    // await Hive.openBox(myBoxName);
     Hive.box(myBoxName);
 
     setState(() {
@@ -26,7 +26,7 @@ class _FavoriteScreenState extends ConsumerState<FavoriteScreen> {
   @override
   void initState() {
     super.initState();
-    openBox();
+    // openBox();
   }
 
   Widget empty() {

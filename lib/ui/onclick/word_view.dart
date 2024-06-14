@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:intern_dictionary/ui/dashboard/components/translate_widget.dart';
 
-import '../../../model/word_model.dart';
-import '../../../theme/style.dart';
+import '../../model/word_model.dart';
+import '../../theme/style.dart';
 
 class WordView extends ConsumerWidget {
 
@@ -18,7 +19,7 @@ class WordView extends ConsumerWidget {
       children: [
         Row(
                 children: [
-                  Text("${word}",
+                  Text("$word",
                       style:
                           Style.wordStyle.copyWith(color: theme.primaryColor)),
                   const SizedBox(width: 20.0),
@@ -33,18 +34,20 @@ class WordView extends ConsumerWidget {
                       ),
                     ),
                   ),
+                  TranslateWidget( toTranslate: '| $word'),
+                  const SizedBox(width: 20.0),
                 ],
               ),
         Row(
-                    children: [
-                      Text(phonetic ?? 'Empty ',
-                          style: Style.phoneticStyle
-                              .copyWith(color: theme.primaryColor)),
-                      Text(meanings![0]?.partOfSpeech ?? "Empty",
-                          style: Style.partOfSpeechStyle
-                              .copyWith(color: theme.primaryColor)),
-                    ],
-                  ),
+          children: [
+            Text(phonetic ?? 'Empty ',
+                style: Style.phoneticStyle
+                    .copyWith(color: theme.primaryColor)),
+            Text(meanings![0]?.partOfSpeech ?? "Empty",
+                style: Style.partOfSpeechStyle
+                    .copyWith(color: theme.primaryColor)),
+          ],
+        ),
       ],
     );
   }

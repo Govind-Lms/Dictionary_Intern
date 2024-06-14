@@ -8,8 +8,10 @@ final fetchWordsRepositoryProvider =
     Provider((ref) => FetchWordsRepositoryServiceImpl(Client()));
 
 final synoProvider = StateProvider<String>((ref) => "");
+final antoProvider = StateProvider<String>((ref) => "");
 
 final wordProvider = StateProvider<String>((ref) => "");
+final translatedWordProvider = StateProvider<String>((ref) => "");
 
 final dicitonaryProvider = FutureProvider<List<Word>>((ref) async{
   final word = ref.watch(wordProvider);

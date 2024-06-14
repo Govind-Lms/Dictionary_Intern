@@ -2,59 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intern_dictionary/provider/dict_provider.dart';
 import 'package:intern_dictionary/theme/style.dart';
-import 'package:intern_dictionary/ui/view/onclick/data_view.dart';
-import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+import 'package:intern_dictionary/ui/onclick/data_view.dart';
 
-class BottomSheetView extends ConsumerStatefulWidget {
-  const BottomSheetView({super.key});
+class SearchedWord extends ConsumerStatefulWidget {
+  const SearchedWord({super.key});
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() =>
-      _BottomSheetViewState();
+  ConsumerState<ConsumerStatefulWidget> createState() => _SearchedWordState();
 }
 
-class _BottomSheetViewState extends ConsumerState<BottomSheetView> {
+class _SearchedWordState extends ConsumerState<SearchedWord> {
   @override
   Widget build(BuildContext context) {
-    final wordData = ref.watch(synoDicitonaryProvider);
-    return wordData.when(
-      data: (data) {
-        return Container(
-          color: Theme.of(context).scaffoldBackgroundColor,
-          child: Column(
-            children: [
-              const SizedBox(height: 50.0,),
-              Container(width: 100.0,height: 5.0,color: Colors.black,),
-              const OnClickSynoWord(),
-            ],
-          ),
-        );
-      },
-      // ignore: prefer_const_constructors
-      error: (error, stackTrace) {
-        
-        return SizedBox(height: MediaQuery.of(context).size.height/2,child: Text("No Data Available"),);
-      },
-      loading: () => const Center(
-        child: CircularProgressIndicator(),
-      ),
-    );
-  }
-}
-
-
-
-class OnClickSynoWord extends ConsumerStatefulWidget {
-  const OnClickSynoWord({super.key});
-
-  @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _OnClickSynoWordState();
-}
-
-class _OnClickSynoWordState extends ConsumerState<OnClickSynoWord> {
-  @override
-  Widget build(BuildContext context) {
-    final wordData = ref.watch(synoDicitonaryProvider);
+    final wordData = ref.watch(dicitonaryProvider);
     return Expanded(
       child: wordData.when(
         data: (wordData) {
@@ -72,11 +32,7 @@ class _OnClickSynoWordState extends ConsumerState<OnClickSynoWord> {
                 margin: const EdgeInsets.only(top: 10.0,left: 20.0,right: 20.0),
                 child: InkWell(
                   onTap: (){
-                    showMaterialModalBottomSheet(
-                      
-                      context: context, builder: (context){
-                      return DataView(word: word);
-                    });
+                  Navigator.of(context).push(MaterialPageRoute(builder: (_)=> DataView(word: word)));
                 },
                   child: Row(
                     children: [
@@ -90,7 +46,7 @@ class _OnClickSynoWordState extends ConsumerState<OnClickSynoWord> {
                       Text(word.meanings![0].partOfSpeech ?? 'Empty POS',style: Style.partOfSpeechStyle.copyWith(fontSize: 16.0,color: Theme.of(context).primaryColor),),
                       const Spacer(),
                       IconButton(onPressed: (){
-                        // Navigator.of(context).push(MaterialPageRoute(builder: (_)=> DataView(word: word)));
+                        Navigator.of(context).push(MaterialPageRoute(builder: (_)=> DataView(word: word)));
                       }, icon: const Icon(Icons.arrow_forward_ios_rounded),iconSize: 20.0,color: Theme.of(context).primaryColor),
                       const SizedBox(width: 10.0,),
                     ],
@@ -99,9 +55,18 @@ class _OnClickSynoWordState extends ConsumerState<OnClickSynoWord> {
               );
             },
           );
-          
         },
-        error: (error, stackTrace) => Text(error.toString()),
+        error: (error, stackTrace) =>  Padding(
+          padding: const EdgeInsets.all(20.0),
+          child:  Center(
+            child:  Text(
+              'Sorry. You have to make sure that the provided word is valid.',
+              textAlign: TextAlign.center,
+               maxLines: 2,
+              style: Style.definationStyle,
+            ),
+          ),
+        ),
         loading: () => const Center(
           child: CircularProgressIndicator(),
         ),

@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:intern_dictionary/ui/view/onclick/meaning_view.dart';
-import 'package:intern_dictionary/ui/view/onclick/syn_anto_view.dart';
+import 'package:intern_dictionary/ui/onclick/meaning_view.dart';
+import 'package:intern_dictionary/ui/onclick/syn_anto_view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../../../model/word_model.dart';
+import '../../model/word_model.dart';
 import 'word_view.dart';
 
 class DataView extends ConsumerStatefulWidget {
@@ -83,7 +83,7 @@ class DataViewState extends ConsumerState<DataView> {
                 ScaffoldMessenger.of(context).showSnackBar(snackBar);
                 setState(() {
                   word.isFav = true;
-                  print(key);
+                  debugPrint(key);
                 });
               }
 
@@ -109,6 +109,7 @@ class DataViewState extends ConsumerState<DataView> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              const SizedBox(height: 20.0,),
               
               WordView(phonetic: word.phonetic, meanings: word.meanings,word: word.word,),
               MeaningView(meanings: word.meanings!),
