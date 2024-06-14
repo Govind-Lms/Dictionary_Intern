@@ -38,6 +38,5 @@ class _TranslateWidgetState extends ConsumerState<TranslateWidget> {
   @override
   Widget build(BuildContext context) {
     return Text(translatedText, style: Style.wordStyle.copyWith(color: Theme.of(context).primaryColor));
-    return Container();
   }
 }

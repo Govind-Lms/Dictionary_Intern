@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intern_dictionary/provider/dict_provider.dart';
-import 'package:intern_dictionary/theme/style.dart';
-import 'package:intern_dictionary/ui/dashboard/components/translate_widget.dart';
 import 'package:intern_dictionary/ui/favorite_screen.dart';
 import 'package:intern_dictionary/ui/ml/text_recog.dart';
 import 'package:intern_dictionary/ui/dashboard/components/word_search.dart';
