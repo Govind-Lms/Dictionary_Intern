@@ -7,7 +7,7 @@ import 'package:intern_dictionary/model/word_model.dart';
 final fetchWordsRepositoryProvider =
     Provider((ref) => FetchWordsRepositoryServiceImpl(Client()));
 
-
+final synoProvider = StateProvider<String>((ref) => "");
 
 final wordProvider = StateProvider<String>((ref) => "");
 
@@ -16,4 +16,14 @@ final dicitonaryProvider = FutureProvider<List<Word>>((ref) async{
   final data = await ref.watch(fetchWordsRepositoryProvider).fetchMeaning(word);
   return data;
 });
+
+
+
+final synoDicitonaryProvider = FutureProvider<List<Word>>((ref) async{
+  final word = ref.watch(synoProvider);
+  final data = await ref.watch(fetchWordsRepositoryProvider).fetchMeaning(word);
+  return data;
+});
+
+
 

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intern_dictionary/provider/dict_provider.dart';
 import 'package:intern_dictionary/theme/style.dart';
-import 'package:intern_dictionary/ui/widgets/onclick/data_view.dart';
+import 'package:intern_dictionary/ui/view/onclick/data_view.dart';
 
 class SearchedWord extends ConsumerStatefulWidget {
   const SearchedWord({super.key});

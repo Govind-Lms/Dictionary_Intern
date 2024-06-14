@@ -10,7 +10,7 @@ import 'package:intern_dictionary/ui/widgets/dashboard/word_empty_screen.dart';
 import '../widgets/dashboard/searched_word.dart';
 
 class Dashboard extends ConsumerStatefulWidget {
-  const Dashboard({super.key});
+  const Dashboard( {super.key});
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _DashboardState();

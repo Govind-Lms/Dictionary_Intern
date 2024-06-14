@@ -54,6 +54,8 @@ dependencies:
   flutter_dialogs: ^3.0.0
   googleapis: ^13.1.0
   translator: ^1.0.0
+  modal_bottom_sheet: ^3.0.0
+
 
 dev_dependencies:
   flutter_test:
