@@ -2,15 +2,19 @@ import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:intern_dictionary/model/word_model.dart';
-import 'package:intern_dictionary/theme/app_theme.dart';
-import 'package:intern_dictionary/ui/dashboard/dashboard.dart';
+import 'package:intern_dictionary/src/core/model/word_model.dart';
+import 'package:intern_dictionary/src/const/app_theme.dart';
+import 'package:intern_dictionary/src/presentation/view/dashboard/dashboard.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+
+// import 'dart:async';
+// import 'package:local_auth/local_auth.dart';
+
+
 
 void main() async{
-  setUp();
-  runApp(const ProviderScope(child: MyApp()));
+  await setUp();
+  runApp(const ProviderScope(child:  MyApp()));
 }
 
   setUp() async{
@@ -20,7 +24,6 @@ void main() async{
       ),
     );
     WidgetsFlutterBinding.ensureInitialized();
-    await SharedPreferences.getInstance();
     await Hive.initFlutter();
     final directory = await getApplicationDocumentsDirectory();
     Hive
@@ -43,7 +46,7 @@ class _MyAppState extends State<MyApp> {
   final ThemeMode _themeMode = ThemeMode.system;
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp( 
       title: 'Dictionary',
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
