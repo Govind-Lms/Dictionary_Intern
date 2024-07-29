@@ -14,24 +14,10 @@ class FavoriteScreen extends ConsumerStatefulWidget {
 
 class _FavoriteScreenState extends ConsumerState<FavoriteScreen> {
   String myBoxName = "favoriteBox";
-  
-  openBox() async {
-    // await Hive.openBox(myBoxName);
-    Hive.box(myBoxName);
-
-    setState(() {
-    });
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    // openBox();
-  }
 
   Widget empty() {
     return const Center(
-      child: Text('Nth Here'),
+      child: Text('Nth Store In Local DB'),
     );
   }
 

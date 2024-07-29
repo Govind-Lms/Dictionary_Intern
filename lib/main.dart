@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -25,15 +26,23 @@ void main() async{
     );
     WidgetsFlutterBinding.ensureInitialized();
     await Hive.initFlutter();
-    final directory = await getApplicationDocumentsDirectory();
+    final directory = await getAppDirectory();
     Hive
-      ..init(directory.path)
+      ..init(directory)
       ..openBox("favoriteBox")
       ..registerAdapter(WordAdapter())
       ..registerAdapter(MeaningAdapter())
       ..registerAdapter(DefinitionAdapter())
       ..registerAdapter(PhoneticAdapter());
   }
+Future getAppDirectory() async {
+  if (kIsWeb) {
+    return "/assets/temp";
+  } else {
+    return await getApplicationDocumentsDirectory()
+        .then((directory) => directory.path);
+  }
+}
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});

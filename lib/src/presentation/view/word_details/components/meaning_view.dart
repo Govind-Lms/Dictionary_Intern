@@ -23,9 +23,13 @@ class _MeaningViewState extends ConsumerState<MeaningView> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return SizedBox(
-      height: 400,
+      height: 350,
       child: ListView.builder(
         itemCount: widget.meanings[0].definitions!.length,
+        // gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        //   crossAxisCount: 1,
+        //   childAspectRatio: 4 / 1,
+        // ),
         itemBuilder: (BuildContext context, int index) {
           final defination = widget.meanings[0].definitions![index];
           return ExpandableNotifier(
@@ -83,12 +87,13 @@ class _MeaningViewState extends ConsumerState<MeaningView> {
                       child: Row(
                         children: [
                           Text(
-                            isTranslated== false ?  "↠ Defination ${index + 1}" : "↠ အဓိပ္ပာယ် ${index + 1}",
+                            isTranslated == false
+                                ? "↠ Defination ${index + 1}"
+                                : "↠ အဓိပ္ပာယ် ${index + 1}",
                             textAlign: TextAlign.justify,
                             style: Style.partOfSpeechStyle
                                 .copyWith(color: theme.primaryColor),
                           ),
-                              
                           const Spacer(),
                           Icon(
                             Icons.arrow_drop_up_sharp,
@@ -106,8 +111,8 @@ class _MeaningViewState extends ConsumerState<MeaningView> {
                       isTranslated == false
                           ? 'Defination'
                           : 'အဓိပ္ပာယ်ဖွင့်ဆိုချက်',
-                      style: Style.wordStyle.copyWith(
-                          color: theme.primaryColor, fontSize: 18.0),
+                      style: Style.wordStyle
+                          .copyWith(color: theme.primaryColor, fontSize: 18.0),
                     ),
                     isTranslated == false
                         ? Text(
@@ -121,8 +126,8 @@ class _MeaningViewState extends ConsumerState<MeaningView> {
                     const Gap(10.0),
                     Text(
                       isTranslated == false ? 'Example' : 'ဥပမာ',
-                      style: Style.wordStyle.copyWith(
-                          color: theme.primaryColor, fontSize: 18.0),
+                      style: Style.wordStyle
+                          .copyWith(color: theme.primaryColor, fontSize: 18.0),
                     ),
                     isTranslated == false
                         ? Text(
@@ -140,8 +145,8 @@ class _MeaningViewState extends ConsumerState<MeaningView> {
                     ),
                     Text(
                       isTranslated == false ? 'Synonyms' : 'အဓိပ္ပာယ်တူစကား',
-                      style: Style.wordStyle.copyWith(
-                          color: theme.primaryColor, fontSize: 18.0),
+                      style: Style.wordStyle
+                          .copyWith(color: theme.primaryColor, fontSize: 18.0),
                     ),
                     Text(
                       "${defination.synonyms!.map((e) => e.toString())}",
@@ -154,8 +159,8 @@ class _MeaningViewState extends ConsumerState<MeaningView> {
                     ),
                     Text(
                       isTranslated == false ? 'Antonyms' : 'ဆန့်ကျင်ဘက် စကား',
-                      style: Style.wordStyle.copyWith(
-                          color: theme.primaryColor, fontSize: 18.0),
+                      style: Style.wordStyle
+                          .copyWith(color: theme.primaryColor, fontSize: 18.0),
                     ),
                     Text(
                       "${defination.antonyms!.map((e) => e.toString())}",
